@@ -4,6 +4,7 @@ import backend.restaurantservice.dto.MenuItemCreateDto;
 import backend.restaurantservice.dto.MenuItemDto;
 import backend.restaurantservice.entity.MenuItem;
 import backend.restaurantservice.service.MenuItemService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +26,7 @@ public class MenuItemController {
 
     @PostMapping
     public ResponseEntity<MenuItemDto> createMenuItem(
-            @RequestBody MenuItemCreateDto menuItemCreateDto
+            @Valid @RequestBody MenuItemCreateDto menuItemCreateDto
     ) {
         return ResponseEntity.status(HttpStatus.CREATED).
                 body(menuItemService.createMenuItem(menuItemCreateDto));
