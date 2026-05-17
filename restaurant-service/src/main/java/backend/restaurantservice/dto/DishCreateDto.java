@@ -7,12 +7,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import java.math.BigDecimal;
-import java.util.UUID;
 
 @AllArgsConstructor
 @Getter
 @Setter
-public class MenuItemCreateDto {
+public class DishCreateDto {
 
     @NotBlank(message = "имя не может быть пустым")
     private String name;

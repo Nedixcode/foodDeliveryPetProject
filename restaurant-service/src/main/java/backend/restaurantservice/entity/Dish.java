@@ -1,10 +1,10 @@
 package backend.restaurantservice.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.math.BigDecimal;
 import java.util.UUID;
 
@@ -13,13 +13,14 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-public class MenuItem {
+@AllArgsConstructor
+public class Dish {
 
     @GeneratedValue(strategy = GenerationType.UUID)
     @Id
     private UUID id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, unique = true)
     private String name;
 
     @Column(name = "description")
@@ -31,7 +32,7 @@ public class MenuItem {
     @Column(name = "is_available", nullable = false)
     private Boolean isAvailable = true;
 
-    public MenuItem(String name, String description, BigDecimal price, Boolean isAvailable) {
+    public Dish(String name, String description, BigDecimal price, Boolean isAvailable) {
         this.name = name;
         this.description = description;
         this.price = price;
