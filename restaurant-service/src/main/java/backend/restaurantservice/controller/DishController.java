@@ -41,8 +41,7 @@ public class DishController {
             @PathVariable UUID id,
             @Valid @RequestBody DishCreateDto dishCreateDto
     ) {
-        return ResponseEntity.status(HttpStatus.CREATED).
-                body(dishService.updateDish(id, dishCreateDto));
+        return ResponseEntity.ok(dishService.updateDish(id, dishCreateDto));
     }
 
     @PostMapping("/{id}/activate")

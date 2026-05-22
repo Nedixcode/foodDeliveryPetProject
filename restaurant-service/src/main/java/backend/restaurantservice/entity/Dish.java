@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity
-@Table(name = "menu_items")
+@Table(name = "dishs")
 @Getter
 @Setter
 @NoArgsConstructor
