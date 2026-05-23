@@ -1,6 +1,9 @@
 package backend.orderservice.entity;
 
+import backend.orderservice.enums.OrderStatus;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -42,10 +45,22 @@ public class Order {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    @Column(name = "updated_at", nullable = false)
+    @Column(name = "updated_at")
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<OrderItem> orderItem;
+    private List<OrderItem> orderItemlist;
+
+    public Order(UUID userId,
+                 @NotNull(message = "отсутствует id ресторана") UUID restaurantId,
+                 @NotBlank(message = "ключ идемпотентности не может быть пустой") String idempotencyKey,
+                 BigDecimal totalAmount,
+                 OrderStatus orderStatus) {
+        this.userId = userId;
+        this.restaurantId = restaurantId;
+        this.idempotencyKey = idempotencyKey;
+        this.totalAmount = totalAmount;
+        this.orderStatus = orderStatus;
+    }
 }

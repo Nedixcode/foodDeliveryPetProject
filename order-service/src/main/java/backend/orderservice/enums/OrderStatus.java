@@ -1,4 +1,4 @@
-package backend.orderservice.entity;
+package backend.orderservice.enums;
 
 public enum OrderStatus {
     PENDING,

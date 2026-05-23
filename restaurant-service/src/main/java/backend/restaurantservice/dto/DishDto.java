@@ -14,7 +14,10 @@ import java.util.UUID;
 public class DishDto implements Serializable {
 
     private UUID id;
+
     private String name;
+
     private String description;
+
     private BigDecimal price;
 }
